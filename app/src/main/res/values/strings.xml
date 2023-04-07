@@ -12,4 +12,8 @@
     <string name="hobby">특기를 입력하세요</string>
     <string name="signInset">회원가입 완료</string>
     <string name="profile">기본정보</string>
+    <string name="loginSuccess">로그인 성공</string>
+    <string name="loginFail">로그인 실패</string>
+    <string name="signinSuccess">회원가입이 완료되었습니다</string>
+    <string name="btn_signIn">회원가입</string>
 </resources>
