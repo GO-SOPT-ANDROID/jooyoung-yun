@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_to_go_android"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:text="@string/welcome_to_go_android"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_text_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="90dp"
         android:text="@string/id"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="90dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
 
     <EditText
         android:id="@+id/et_text_inputid"
@@ -50,48 +49,48 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/pw"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/et_text_inputid"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_text_inputid" />
 
     <EditText
         android:id="@+id/et_text_inputps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:hint="@string/input_pw"
-        android:textSize="20sp"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tv_text_ps"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_text_ps" />
 
     <!--padding vertical 로 위아래로 버튼 늘리기 -->
     <Button
         android:id="@+id/login_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
         android:paddingVertical="15dp"
         android:text="@string/login"
-        app:layout_constraintTop_toBottomOf="@+id/et_text_inputps"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_text_inputps" />
 
     <Button
         android:id="@+id/bt_signIn_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/btn_signIn"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="30dp"
-        android:paddingVertical="15dp"/>
+        android:paddingVertical="15dp"
+        android:text="@string/btn_signIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
