@@ -16,4 +16,6 @@
     <string name="loginFail">로그인 실패</string>
     <string name="signinSuccess">회원가입이 완료되었습니다</string>
     <string name="btn_signIn">회원가입</string>
+    <string name="id_need">아이디는 6~10 사이로 입력해주세요</string>
+    <string name="pw_need">비밀번호는 8~1 사이로 입력해주세요</string>
 </resources>
