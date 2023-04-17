@@ -19,10 +19,11 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     /*회원가입 조건*/
-    fun signIn() {
+    private fun signIn() {
         if (binding.etNewID.length() in 6..10 && binding.etNewPW.length() in 8..12) {
 
             Snackbar.make(binding.root, getString(R.string.id_need), Snackbar.LENGTH_SHORT).show()
+
             val id = binding.etNewID.text.toString()
             val pw = binding.etNewPW.text.toString()
             val name = binding.etName.text.toString()
@@ -36,7 +37,9 @@ class SignUpActivity : AppCompatActivity() {
 
             setResult(RESULT_OK, intent)
             finish()
-        } else {
+        } else if (binding.etNewID.length() < 6 || binding.etNewID.length() > 10) {
+            Snackbar.make(binding.root, getString(R.string.id_need), Snackbar.LENGTH_SHORT).show()
+        } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
             Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT).show()
         }
     }
