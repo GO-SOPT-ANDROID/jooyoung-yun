@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import org.android.go.sopt.R
 import org.android.go.sopt.databinding.FragmentHomeBinding
 import org.android.go.sopt.home.adapter.ProfileAdapter
 import org.android.go.sopt.home.adapter.TitleAdapter
-import org.android.go.sopt.home.data.Profile
+import org.android.go.sopt.home.data.HomeViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -32,9 +31,12 @@ class HomeFragment : Fragment() {
         val profileAdapter = ProfileAdapter(requireContext())
         val titleAdapter = TitleAdapter(requireContext())
 
-        val concatAdapter = ConcatAdapter(titleAdapter, profileAdapter)
-        binding.recyclerview.adapter = concatAdapter
         profileAdapter.setProfileList(viewModel.mockProfileList)
+
+        val concatAdapter = ConcatAdapter(titleAdapter, profileAdapter)
+
+        binding.recyclerview.adapter = concatAdapter
+
     }
 
     override fun onDestroyView() {
