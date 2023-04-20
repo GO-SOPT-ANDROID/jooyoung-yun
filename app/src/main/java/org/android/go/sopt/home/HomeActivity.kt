@@ -1,24 +1,37 @@
 package org.android.go.sopt.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import org.android.go.sopt.R
+import org.android.go.sopt.databinding.ActivityMainBinding
+import org.android.go.sopt.databinding.FragmentHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    lateinit var binding: ActivityMainBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
-        if (currentFragment == null){
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fcv_main, HomeFragment.newInstance())
-                .commit()
+        binding.bnvMain.setOnItemSelectedListener {
+            changeFragment(
+                when (it.itemId) {
+                    R.id.menu_home -> HomeFragment()
+                    R.id.menu_search -> SearchFragment()
+                    else -> GalleryFragment()
+                }
+            )
+            true
         }
-
     }
-
-
+    /*fragment 바꾸기*/
+    private fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fcv_main, fragment)
+            .commit()
+    }
 }
