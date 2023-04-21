@@ -16,7 +16,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
 
-        binding.root.setOnClickListener{
+        binding.root.setOnClickListener {
             hideKeyboard()
         }
 
@@ -46,15 +46,19 @@ class SignUpActivity : AppCompatActivity() {
             finish()
         } else if (binding.etNewID.length() < 6 || binding.etNewID.length() > 10) {
             Snackbar.make(binding.root, getString(R.string.id_need), Snackbar.LENGTH_SHORT).show()
-        }else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
+        } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
             Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT).show()
         }
     }
 
-    fun hideKeyboard(){
-        if(this != null){
-            val imm : InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as  InputMethodManager
-            imm.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    fun hideKeyboard() {
+        if (this != null) {
+            val imm: InputMethodManager =
+                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(
+                this.currentFocus?.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
 
     }
