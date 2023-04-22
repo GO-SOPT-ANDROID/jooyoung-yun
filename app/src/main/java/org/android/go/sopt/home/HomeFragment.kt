@@ -29,13 +29,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val profileAdapter = ProfileAdapter(requireContext())
-        //val titleAdapter = TitleAdapter(requireContext())
+        val titleAdapter = TitleAdapter(requireContext())
 
         profileAdapter.setProfileList(viewModel.mockProfileList)
 
-        //val concatAdapter = ConcatAdapter(titleAdapter, profileAdapter)
+        val concatAdapter = ConcatAdapter(titleAdapter, profileAdapter)
 
-        binding.recyclerview.adapter = profileAdapter
+        binding.recyclerview.adapter = concatAdapter
 
     }
 
