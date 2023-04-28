@@ -28,7 +28,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     /*회원가입 조건*/
-    fun signIn() {
+    private fun signIn() {
         if (binding.etNewID.length() in 6..10 && binding.etNewPW.length() in 8..12) {
 
             val id = binding.etNewID.text.toString()
@@ -51,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    fun hideKeyboard() {
+    private fun hideKeyboard() {
         if (this != null) {
             val imm: InputMethodManager =
                 this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
