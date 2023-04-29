@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*회원가입 후 되돌아오면서 Snackbar 로 메세지 띄우기*/
         setResult()
-        /*로그인 성공 시 토스트 메시지*/
 
         /*회원가입 버튼 눌렀을 때 조건에 맞는 정보를 입력하면 다시 MainActivity로 돌아옴*/
         binding.btSignInBtn.setOnClickListener {
