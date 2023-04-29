@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_title2"
+        android:id="@+id/tv_title"
         android:text="@string/welcome_to_go_android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
