@@ -1,4 +1,4 @@
-package org.android.go.sopt.home.adapter
+package org.android.go.sopt.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

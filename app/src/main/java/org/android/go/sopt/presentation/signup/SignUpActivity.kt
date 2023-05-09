@@ -1,17 +1,23 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation.signup
 
 import android.content.Context
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Input
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.android.go.sopt.R
+import org.android.go.sopt.ServicePool
 import org.android.go.sopt.databinding.ActivitySignupBinding
+import org.android.go.sopt.data.local.RequestSignUpDto
+import org.android.go.sopt.data.local.ResponesSignUpDto
+import retrofit2.Call
+import retrofit2.Response
 
 /*회원가입 페이지*/
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignupBinding
+    private val signUpService = ServicePool.signUpService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
@@ -60,6 +66,40 @@ class SignUpActivity : AppCompatActivity() {
                 InputMethodManager.HIDE_NOT_ALWAYS
             )
         }
+    }
 
+    private fun canUserSignIn(): Boolean {
+        return binding.etNewID.text.length in 6..10
+                && binding.etNewPW.text.length in 8..12
+                && binding.etName.text.isNotBlank()
+                && binding.etHobby.text.isNotBlank()
+    }
+
+    private fun completeSignUp() {
+        binding.btSignUpBtn.setOnClickListener {
+            if (canUserSignIn()) {
+                signUpService.signUp(
+                    with(binding) {
+                        RequestSignUpDto(
+                            etNewID.text.toString(),
+                            etNewPW.text.toString(),
+                            etNewID.text.toString(),
+                            etHobby.text.toString()
+                        )
+                    }
+                ).enqueue(object : retrofit2.Callback<ResponesSignUpDto> {
+                    override fun onResponse(
+                        call: Call<ResponesSignUpDto>,
+                        response: Response<ResponesSignUpDto>
+                    ) {
+                        if (response.isSuccessful) {
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponesSignUpDto>, t: Throwable) {
+                    }
+                })
+            }
+        }
     }
 }

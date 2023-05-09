@@ -1,4 +1,4 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation.profile
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

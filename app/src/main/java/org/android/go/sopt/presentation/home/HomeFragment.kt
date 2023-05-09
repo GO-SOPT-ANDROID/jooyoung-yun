@@ -1,4 +1,4 @@
-package org.android.go.sopt.home
+package org.android.go.sopt.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import org.android.go.sopt.databinding.FragmentHomeBinding
-import org.android.go.sopt.home.adapter.ProfileAdapter
-import org.android.go.sopt.home.adapter.TitleAdapter
-import org.android.go.sopt.home.data.HomeViewModel
+import org.android.go.sopt.adapter.ProfileAdapter
+import org.android.go.sopt.adapter.TitleAdapter
+import org.android.go.sopt.data.HomeViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

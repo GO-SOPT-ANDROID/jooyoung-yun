@@ -1,4 +1,4 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation.login
 
 
 import android.content.Intent
@@ -8,9 +8,12 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import org.android.go.sopt.presentation.profile.ProfileActivity
+import org.android.go.sopt.R
+import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     //전역변수 설정
     lateinit var binding: ActivityLoginBinding
     private lateinit var activityResult: ActivityResultLauncher<Intent>
