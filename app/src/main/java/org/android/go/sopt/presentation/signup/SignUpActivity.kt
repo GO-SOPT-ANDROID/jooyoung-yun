@@ -6,10 +6,10 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.android.go.sopt.R
-import org.android.go.sopt.ServicePool
 import org.android.go.sopt.databinding.ActivitySignupBinding
 import org.android.go.sopt.data.local.RequestSignUpDto
 import org.android.go.sopt.data.local.ResponesSignUpDto
+import org.android.go.sopt.data.local.ServicePool
 import retrofit2.Call
 import retrofit2.Response
 
