@@ -3,6 +3,7 @@ package org.android.go.sopt.presentation.signup
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.android.go.sopt.R
@@ -28,13 +29,13 @@ class SignUpActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.btSignUpBtn.setOnClickListener {
-            signIn()
+        binding.btSignUp.setOnClickListener {
+            completeSignUp()
         }
     }
 
     /*회원가입 조건*/
-    private fun signIn() {
+    /*private fun signIn() {
         if (binding.etNewID.length() in 6..10 && binding.etNewPW.length() in 8..12) {
 
             val id = binding.etNewID.text.toString()
@@ -55,9 +56,9 @@ class SignUpActivity : AppCompatActivity() {
         } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
             Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT).show()
         }
-    }
+    }*/
 
-    fun hideKeyboard() {
+    private fun hideKeyboard() {
         if (this != null) {
             val imm: InputMethodManager =
                 this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -68,7 +69,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun canUserSignIn(): Boolean {
+    private fun canUserSignUp(): Boolean {
         return binding.etNewID.text.length in 6..10
                 && binding.etNewPW.text.length in 8..12
                 && binding.etName.text.isNotBlank()
@@ -76,14 +77,14 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun completeSignUp() {
-        binding.btSignUpBtn.setOnClickListener {
-            if (canUserSignIn()) {
+        binding.btSignUp.setOnClickListener {
+            if (canUserSignUp()) {
                 signUpService.signUp(
                     with(binding) {
                         RequestSignUpDto(
                             etNewID.text.toString(),
                             etNewPW.text.toString(),
-                            etNewID.text.toString(),
+                            etName.text.toString(),
                             etHobby.text.toString()
                         )
                     }
@@ -93,12 +94,27 @@ class SignUpActivity : AppCompatActivity() {
                         response: Response<ResponesSignUpDto>
                     ) {
                         if (response.isSuccessful) {
+                            Toast.makeText(this@SignUpActivity, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+
+                            if (!isFinishing) finish()
+                        } else {
+                            Toast.makeText(this@SignUpActivity, "서버통신 실패(40X)", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }
 
                     override fun onFailure(call: Call<ResponesSignUpDto>, t: Throwable) {
+                        Toast.makeText(this@SignUpActivity, "서버통신 실패(응답값 X)", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 })
+            } else if (binding.etNewID.length() < 6 || binding.etNewID.length() > 10) {
+                Snackbar.make(binding.root, getString(R.string.id_need), Snackbar.LENGTH_SHORT)
+                    .show()
+            } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
+                Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
     }
