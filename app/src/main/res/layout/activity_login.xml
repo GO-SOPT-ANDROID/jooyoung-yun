@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:hint="@string/input_id"
+        android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +72,7 @@
 
     <!--padding vertical 로 위아래로 버튼 늘리기 -->
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/bt_logIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -83,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_text_inputps" />
 
     <Button
-        android:id="@+id/bt_signIn_btn"
+        android:id="@+id/bt_signIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -91,6 +92,6 @@
         android:text="@string/btn_signIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_logIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
