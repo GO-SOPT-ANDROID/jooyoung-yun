@@ -3,7 +3,6 @@ package org.android.go.sopt.data.local
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
-import org.android.go.sopt.data.local.SignUpService
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -18,4 +17,5 @@ object ApiFactory {
 
 object ServicePool {
     val signUpService = ApiFactory.create<SignUpService>()
+    val logInService = ApiFactory.create<LogInService>()
 }
