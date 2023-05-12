@@ -16,7 +16,7 @@ class ProfileActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val hobby = intent.getStringExtra("hobby")
 
-        binding.tvProfileName.text = "이름 :$name"
+        binding.tvProfileName.text = "이름 : $name"
         binding.tvProfileHobby.text = "특기 : $hobby"
     }
 }
