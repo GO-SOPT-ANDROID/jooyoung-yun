@@ -50,22 +50,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         setLogInResult()
-
-        /*로그인 버튼 눌렀을 때*/
-        /*binding.btLogIn.setOnClickListener {
-            if (binding.etTextInputid.text.toString() == id && binding.etTextInputps.text.toString() == pw) {
-                Toast.makeText(this, getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this, ProfileActivity::class.java).apply {
-                    putExtra("name", name)
-                    putExtra("hobby", hobby)
-                }
-
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, getString(R.string.loginFail), Toast.LENGTH_SHORT).show()
-            }
-        }*/
     }
 
     private fun hideKeyboard() {
@@ -80,8 +64,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun applyInfoToProfileActivity() {
-
-
         val intent = Intent(this, ProfileActivity::class.java).apply {
             putExtra("name", name)
             putExtra("hobby", hobby)
@@ -95,16 +77,18 @@ class LoginActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == RESULT_OK) {
-                Snackbar.make(
+                /*Snackbar.make(
                     binding.root,
                     getString(R.string.signinSuccess),
                     Snackbar.LENGTH_SHORT
-                ).show()
+                ).show()*/
 
                 id = result.data?.getStringExtra("id") ?: ""
                 pw = result.data?.getStringExtra("pw") ?: ""
                 name = result.data?.getStringExtra("name") ?: ""
                 hobby = result.data?.getStringExtra("hobby") ?: ""
+
+                Log.d("id 값을 가져오자", id)
             }
         }
     }
@@ -114,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
             Log.d("setOnClick", "로그인버튼이 눌렸습니다")
             logInService.logIn(
                 with(binding) {
-                    Log.d("dfdf","로그인 서비스 시작")
+                    Log.d("logInService", "로그인 서비스 시작")
                     RequestLogInDto(
                         etTextInputid.text.toString(),
                         etTextInputps.text.toString()
@@ -126,13 +110,16 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponesLogInDto>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("response","로그인 성공함")
+                        Log.d("response", "로그인 성공함")
+
                         Toast.makeText(
                             this@LoginActivity,
                             getString(R.string.loginSuccess),
                             Toast.LENGTH_SHORT
                         ).show()
+
                         applyInfoToProfileActivity()
+
                         if (!isFinishing) finish()
                     } else {
                         Toast.makeText(
@@ -142,8 +129,10 @@ class LoginActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+
                 override fun onFailure(call: Call<ResponesLogInDto>, t: Throwable) {
-                    Toast.makeText(this@LoginActivity, "서버통신 실패(응닶값 X)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "서버통신 실패(응닶값 X)", Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
         }
