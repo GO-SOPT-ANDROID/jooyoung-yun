@@ -22,20 +22,19 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
-
+        setContentView(binding.root)
+        /*키보드 숨기기*/
         binding.root.setOnClickListener {
             hideKeyboard()
         }
-
-        setContentView(binding.root)
-
+        /*서버를 이용한 회원가입*/
         binding.btSignUp.setOnClickListener {
             completeSignUp()
         }
     }
 
     /*회원가입 조건*/
-    /*private fun signIn() {
+    private fun signIn() {
         if (binding.etNewID.length() in 6..10 && binding.etNewPW.length() in 8..12) {
 
             val id = binding.etNewID.text.toString()
@@ -56,7 +55,7 @@ class SignUpActivity : AppCompatActivity() {
         } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
             Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT).show()
         }
-    }*/
+    }
 
     private fun hideKeyboard() {
         if (this != null) {
@@ -96,7 +95,6 @@ class SignUpActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             Toast.makeText(this@SignUpActivity, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT)
                                 .show()
-
                             if (!isFinishing) finish()
                         } else {
                             Toast.makeText(this@SignUpActivity, "서버통신 실패(40X)", Toast.LENGTH_SHORT)
@@ -109,12 +107,7 @@ class SignUpActivity : AppCompatActivity() {
                             .show()
                     }
                 })
-            } else if (binding.etNewID.length() < 6 || binding.etNewID.length() > 10) {
-                Snackbar.make(binding.root, getString(R.string.id_need), Snackbar.LENGTH_SHORT)
-                    .show()
-            } else if (binding.etNewPW.length() < 8 || binding.etNewPW.length() > 12) {
-                Snackbar.make(binding.root, getString(R.string.pw_need), Snackbar.LENGTH_SHORT)
-                    .show()
+                signIn()
             }
         }
     }
