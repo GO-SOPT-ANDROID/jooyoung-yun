@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager_home"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/img_gallery"
+        android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="30dp"
+        android:contentDescription="pager item image"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

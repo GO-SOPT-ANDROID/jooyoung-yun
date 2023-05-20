@@ -1,11 +1,11 @@
-package org.android.go.sopt.home.adapter
+package org.android.go.sopt.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.android.go.sopt.databinding.LayoutItemBinding
-import org.android.go.sopt.home.data.Profile
+import org.android.go.sopt.data.Profile
 
 class ProfileAdapter(context: Context): RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
