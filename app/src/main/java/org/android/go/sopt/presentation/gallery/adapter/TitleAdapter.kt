@@ -1,4 +1,4 @@
-package org.android.go.sopt.adapter
+package org.android.go.sopt.presentation.gallery.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

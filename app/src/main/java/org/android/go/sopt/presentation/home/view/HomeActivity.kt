@@ -1,11 +1,11 @@
-package org.android.go.sopt.presentation.home
+package org.android.go.sopt.presentation.home.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityMainBinding
-import org.android.go.sopt.presentation.gallery.GalleryFragment
+import org.android.go.sopt.presentation.gallery.view.GalleryFragment
 import org.android.go.sopt.presentation.search.SearchFragment
 
 class HomeActivity : AppCompatActivity() {

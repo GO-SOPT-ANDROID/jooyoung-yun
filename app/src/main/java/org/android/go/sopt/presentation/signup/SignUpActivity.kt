@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivitySignupBinding
-import org.android.go.sopt.data.local.RequestSignUpDto
-import org.android.go.sopt.data.local.ResponesSignUpDto
-import org.android.go.sopt.data.local.ServicePool
+import org.android.go.sopt.data.api.ServicePool
+import org.android.go.sopt.data.request.RequestSignUpDto
+import org.android.go.sopt.data.response.ResponseSignUpDto
 import retrofit2.Call
 import retrofit2.Response
 
@@ -34,7 +34,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     /*회원가입 조건*/
-    private fun signIn() {
+    private fun signUp() {
         if (binding.etNewID.length() in 6..10 && binding.etNewPW.length() in 8..12) {
 
             val id = binding.etNewID.text.toString()
@@ -87,10 +87,10 @@ class SignUpActivity : AppCompatActivity() {
                             etHobby.text.toString()
                         )
                     }
-                ).enqueue(object : retrofit2.Callback<ResponesSignUpDto> {
+                ).enqueue(object : retrofit2.Callback<ResponseSignUpDto> {
                     override fun onResponse(
-                        call: Call<ResponesSignUpDto>,
-                        response: Response<ResponesSignUpDto>
+                        call: Call<ResponseSignUpDto>,
+                        response: Response<ResponseSignUpDto>
                     ) {
                         if (response.isSuccessful) {
                             Toast.makeText(this@SignUpActivity, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT)
@@ -102,12 +102,12 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<ResponesSignUpDto>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseSignUpDto>, t: Throwable) {
                         Toast.makeText(this@SignUpActivity, "서버통신 실패(응답값 X)", Toast.LENGTH_SHORT)
                             .show()
                     }
                 })
-                signIn()
+                signUp()
             }
         }
     }

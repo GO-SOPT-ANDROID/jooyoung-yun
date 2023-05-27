@@ -1,18 +1,9 @@
-package org.android.go.sopt.data.local
+package org.android.go.sopt.data.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
 @Serializable
-data class RequestLogInDto(
-    @SerialName("id")
-    val id: String,
-    @SerialName("password")
-    val password: String
-)
-
-@Serializable
-data class ResponesLogInDto(
+data class ResponseSignUpDto(
     @SerialName("status")
     val status: Int,
     @SerialName("message")
@@ -22,13 +13,9 @@ data class ResponesLogInDto(
 ){
     @Serializable
     data class UserInfo(
-        @SerialName("id")
-        val id: String,
         @SerialName("name")
         val name: String,
         @SerialName("skill")
-        val skill: String
+        val skill: String,
     )
 }
-
-
