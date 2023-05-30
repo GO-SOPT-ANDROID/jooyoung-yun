@@ -47,7 +47,7 @@ object ImageApiFactory {
 object ServicePool {
     val signUpService = ApiFactory.create<SignUpService>()
     val logInService = ApiFactory.create<LogInService>()
-    val followersService = FriendApiFactory.create<FriendService>()
+    val friendService = FriendApiFactory.create<FriendService>()
     val imageService = ImageApiFactory.create<ImageService>()
 
 }
