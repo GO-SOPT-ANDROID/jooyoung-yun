@@ -33,9 +33,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setData()
     }
 
     fun setAdapter(itemList: List<FriendData?>?){
+        Log.e("setAdapter","어댑터 연결 성공")
         val friendAdapter = FriendAdapter()
 
         binding.rvFriendList.adapter = friendAdapter
@@ -44,7 +46,7 @@ class HomeFragment : Fragment() {
         friendAdapter.submitList(itemList)
     }
 
-    fun setData(){
+    private fun setData(){
         friendService.getFriend().enqueue(object: Callback<ResponseFriendDto>{
             override fun onResponse(
                 call: Call<ResponseFriendDto>,
@@ -60,7 +62,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseFriendDto>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.e("error", t.message.toString())
             }
 
         })

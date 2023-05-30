@@ -23,7 +23,7 @@ class FriendAdapter() : ListAdapter<FriendData, FriendAdapter.FriendViewHolder>(
     }
     /*각각의 ViewHolder에 데이터를 매칭하는 함수*/
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
-        holder.onBind(currentList[position])
+        holder.onBind(getItem(position))
     }
 
     class FriendViewHolder(private val binding: ItemFriendBinding) : ViewHolder(binding.root) {
@@ -38,7 +38,7 @@ class FriendAdapter() : ListAdapter<FriendData, FriendAdapter.FriendViewHolder>(
 
     companion object {
         private val diffCallback =
-            DiffCallback<FriendData>(id = { old, new -> old == new })
+            DiffCallback<FriendData>(id = { old, new -> old.id == new.id })
     }
 
 }
