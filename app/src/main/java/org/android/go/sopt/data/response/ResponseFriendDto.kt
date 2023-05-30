@@ -1,19 +1,35 @@
 package org.android.go.sopt.data.response
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import org.android.go.sopt.data.request.RequestFriendDto
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.*
 
 @Serializable
 data class ResponseFriendDto(
-    @SerialName("page")
-    val page: Int,
+    val page: Long? = null,
+
     @SerialName("per_page")
-    val per_page: Int,
-    @SerialName("total")
-    val total: Int,
+    val perPage: Long? = null,
+
+    val total: Long? = null,
+
     @SerialName("total_pages")
-    val total_pages: Int,
-    @SerialName("data")
-    val data: List<RequestFriendDto>,
+    val totalPages: Long? = null,
+
+    val data: List<FriendData>? = null,
+)
+
+@Serializable
+data class FriendData(
+    val id: Long? = null,
+    val email: String? = null,
+
+    @SerialName("first_name")
+    val firstName: String? = null,
+
+    @SerialName("last_name")
+    val lastName: String? = null,
+
+    val avatar: String? = null
 )
