@@ -21,20 +21,23 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="30sp"
+            android:layout_marginBottom="10dp"
             tools:text="name" />
 
         <TextView
             android:id="@+id/tv_email"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="email"
+            android:layout_gravity="center"
             android:textSize="20sp"
+            android:layout_marginBottom="10dp"
             android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/img_follower"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:src="@drawable/snoopy" />
 
