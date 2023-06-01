@@ -1,4 +1,4 @@
-package org.android.go.sopt.presentation.profile
+package org.android.go.sopt.presentation.profile.model
 
 import androidx.annotation.DrawableRes
 
