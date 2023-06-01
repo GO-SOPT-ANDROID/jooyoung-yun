@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.android.go.sopt.databinding.LayoutItemBinding
-import org.android.go.sopt.presentation.profile.Profile
+import org.android.go.sopt.presentation.profile.model.Profile
 
 class ProfileAdapter(context: Context): RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }

@@ -10,9 +10,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import org.android.go.sopt.presentation.profile.ProfileActivity
-import org.android.go.sopt.data.api.ServicePool
-import org.android.go.sopt.presentation.signup.SignUpActivity
+import org.android.go.sopt.presentation.profile.view.ProfileActivity
+import org.android.go.sopt.presentation.signup.view.SignUpActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.presentation.login.viewmodel.LogInViewModel
 
@@ -24,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var pw: String
     private lateinit var name: String
     private lateinit var hobby: String
-    private val logInService = ServicePool.logInService
     private val viewModel by viewModels<LogInViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
