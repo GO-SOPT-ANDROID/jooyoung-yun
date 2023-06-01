@@ -2,7 +2,7 @@ package org.android.go.sopt.presentation.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import org.android.go.sopt.R
-import org.android.go.sopt.presentation.profile.Profile
+import org.android.go.sopt.presentation.profile.model.Profile
 
 class HomeViewModel: ViewModel() {
     val mockProfileList = listOf<Profile>(
