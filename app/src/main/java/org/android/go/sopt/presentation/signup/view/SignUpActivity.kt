@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivitySignupBinding
 import org.android.go.sopt.presentation.signup.viewmodel.SignUpViewModel
+import org.android.go.sopt.util.hideKeyboard
+import org.android.go.sopt.util.showToast
 import java.util.regex.Pattern
 
 
@@ -28,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
 
         /*키보드 숨기기*/
         binding.root.setOnClickListener {
-            hideKeyboard()
+            hideKeyboard(it)
         }
         /*서버를 이용한 회원가입*/
         completeSignUp()
@@ -158,17 +160,6 @@ class SignUpActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun hideKeyboard() {
-        if (this != null) {
-            val imm: InputMethodManager =
-                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(
-                this.currentFocus?.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
-            )
-        }
-    }
-
     private fun canUserSignUp(): Boolean {
         return binding.etName.text.isNotBlank() && binding.etHobby.text.isNotBlank()
     }
@@ -180,9 +171,8 @@ class SignUpActivity : AppCompatActivity() {
             if (canUserSignUp()) {
                 viewModel.loadSignUpData()
                 setSignUpData()
-            }
-            else{
-                Toast.makeText(this,"이름과 특기를 작성해주세요",Toast.LENGTH_SHORT).show()
+            } else {
+                showToast("이름과 특기를 작성해주세요", true)
             }
         }
     }
