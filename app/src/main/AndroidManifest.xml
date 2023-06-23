@@ -18,10 +18,10 @@
             android:name=".presentation.home.view.HomeActivity"
             android:exported="true"/>
         <activity
-            android:name=".presentation.profile.ProfileActivity"
+            android:name=".presentation.profile.view.ProfileActivity"
             android:exported="true"/>
         <activity
-            android:name=".presentation.signup.SignUpActivity"
+            android:name=".presentation.signup.view.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity

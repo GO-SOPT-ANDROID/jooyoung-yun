@@ -55,12 +55,11 @@ class SignUpActivity : AppCompatActivity() {
                     /*조건을 만족하였거나 빈칸일 경우에는 경고 문구 제거*/
                     if (signUpId()) {
                         tvIdError.text = ""
-                        binding.etNewID.setBackgroundResource(R.drawable.background_normal_status)
-                        Log.e("회원가입 아이디", "flag1 = = true")
+                        etNewID.setBackgroundResource(R.drawable.background_normal_status)
                     }
                     if (etNewID.length() == 0) {
                         tvIdError.text = ""
-                        binding.etNewID.setBackgroundResource(R.drawable.background_normal_status)
+                        etNewID.setBackgroundResource(R.drawable.background_normal_status)
                         Log.e("회원가입 아이디", "빈 값")
                     }
                 }
@@ -93,12 +92,11 @@ class SignUpActivity : AppCompatActivity() {
                     /*조건을 만족하였거나 빈칸일 경우에는 경고 문구 제거*/
                     if (signUpPw()) {
                         tvPwError.text = ""
-                        binding.etNewPW.setBackgroundResource(R.drawable.background_normal_status)
+                        etNewPW.setBackgroundResource(R.drawable.background_normal_status)
 
-                        Log.e("회원가입 비번", "flag2 = = true")
                     } else if (etNewPW.length() == 0) {
                         tvPwError.text = ""
-                        binding.etNewPW.setBackgroundResource(R.drawable.background_normal_status)
+                        etNewPW.setBackgroundResource(R.drawable.background_normal_status)
                         Log.e("회원가입 비번", "빈 값일 때 ")
                     }
                 }
@@ -128,21 +126,6 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun setSignUpData() {
-        val id = binding.etNewID.text.toString()
-        val pw = binding.etNewPW.text.toString()
-        val name = binding.etName.text.toString()
-        val hobby = binding.etHobby.text.toString()
-
-        intent.putExtra("id", id)
-        intent.putExtra("pw", pw)
-        intent.putExtra("name", name)
-        intent.putExtra("hobby", hobby)
-
-        setResult(RESULT_OK, intent)
-        finish()
-    }
-
     private fun signUpPw(): Boolean {
         Log.e("pw", "비밀번호 조건")
         val pw: String = binding.etNewPW.text.toString().trim()
@@ -158,6 +141,21 @@ class SignUpActivity : AppCompatActivity() {
             binding.etNewPW.setBackgroundResource(R.drawable.background_need_change_status)
             false
         }
+    }
+
+    private fun setSignUpData() {
+        val id = binding.etNewID.text.toString()
+        val pw = binding.etNewPW.text.toString()
+        val name = binding.etName.text.toString()
+        val hobby = binding.etHobby.text.toString()
+
+        intent.putExtra("id", id)
+        intent.putExtra("pw", pw)
+        intent.putExtra("name", name)
+        intent.putExtra("hobby", hobby)
+
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
     private fun hideKeyboard() {
@@ -177,6 +175,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun completeSignUp() {
         approveSignUpConditions()
+
         binding.btSignUp.setOnClickListener {
             if (canUserSignUp()) {
                 viewModel.loadSignUpData()
