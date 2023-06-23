@@ -2,9 +2,46 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.viewpager2.widget.ViewPager2
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toTopOf="@id/btn_gallery_pick_image"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+      <ImageView
+          android:id="@+id/iv_gallery_first"
+          android:layout_width="100dp"
+          android:layout_height="100dp" />
+
+      <ImageView
+          android:id="@+id/iv_gallery_second"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:layout_marginHorizontal="30dp" />
+
+      <ImageView
+          android:id="@+id/iv_gallery_third"
+          android:layout_width="100dp"
+          android:layout_height="100dp" />
+
+   </LinearLayout>
+
+
+   <Button
+       android:id="@+id/btn_gallery_pick_image"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_marginHorizontal="10dp"
+       android:text="Button"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"/>
+   <!--<androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -13,6 +50,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

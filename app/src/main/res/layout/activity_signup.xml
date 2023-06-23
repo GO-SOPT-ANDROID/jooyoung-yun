@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -34,16 +35,29 @@
     <EditText
         android:id="@+id/et_newID"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_normal_status"
         android:hint="@string/input_id"
         android:inputType="text"
         android:maxLength="10"
-        android:textSize="25sp"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_setID" />
+
+    <TextView
+        android:id="@+id/tv_id_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        tools:text="테스트"
+        android:textColor="@color/red_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_newID" />
 
     <TextView
         android:id="@+id/tv_setPW"
@@ -61,15 +75,28 @@
     <EditText
         android:id="@+id/et_newPW"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_normal_status"
         android:hint="@string/input_pw"
         android:inputType="text"
-        android:textSize="25sp"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_setPW" />
+
+    <TextView
+        android:id="@+id/tv_pw_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        tools:text="테스트"
+        android:textColor="@color/red_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_newPW" />
 
     <TextView
         android:id="@+id/tv_profile"
@@ -87,12 +114,14 @@
     <EditText
         android:id="@+id/et_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_normal_status"
         android:hint="@string/name"
         android:inputType="text"
-        android:textSize="25sp"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profile" />
@@ -100,12 +129,14 @@
     <EditText
         android:id="@+id/et_hobby"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/background_normal_status"
         android:hint="@string/hobby"
         android:inputType="text"
-        android:textSize="25sp"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_name" />
