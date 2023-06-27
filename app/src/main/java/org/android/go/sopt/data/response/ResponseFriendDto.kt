@@ -4,51 +4,59 @@ import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
+import org.android.go.sopt.domain.model.Friend
 
 @Serializable
 data class ResponseFriendDto (
     @SerialName("page")
-    val page: Long? = null,
+    val page: Long,
 
     @SerialName("per_page")
-    val perPage: Long? = null,
+    val perPage: Long,
 
     @SerialName("total")
-    val total: Long? = null,
+    val total: Long,
 
     @SerialName("total_pages")
-    val totalPages: Long? = null,
+    val totalPages: Long,
 
     @SerialName("data")
-    val data: List<FriendData>? = null,
+    val data: List<FriendData>,
 
     @SerialName("support")
-    val support: Support? = null
-)
+    val support: Support
+){
+    @Serializable
+    data class FriendData (
+        @SerialName("id")
+        val id: Long,
 
-@Serializable
-data class FriendData (
-    @SerialName("id")
-    val id: Long? = null,
+        @SerialName("email")
+        val email: String,
 
-    @SerialName("email")
-    val email: String? = null,
+        @SerialName("first_name")
+        val firstName: String,
 
-    @SerialName("first_name")
-    val firstName: String? = null,
+        @SerialName("last_name")
+        val lastName: String,
 
-    @SerialName("last_name")
-    val lastName: String? = null,
+        @SerialName("avatar")
+        val avatar: String
+    )
 
-    @SerialName("avatar")
-    val avatar: String? = null
-)
+    @Serializable
+    data class Support (
+        @SerialName("url")
+        val url: String,
 
-@Serializable
-data class Support (
-    @SerialName("url")
-    val url: String? = null,
-
-    @SerialName("text")
-    val text: String? = null
-)
+        @SerialName("text")
+        val text: String
+    )
+    fun toFriend() = data.map { info->
+        Friend(
+            avatar = info.avatar,
+            email = info.email,
+            firstName = info.firstName
+        )
+    }
+}

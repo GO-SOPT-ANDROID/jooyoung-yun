@@ -1,24 +1,32 @@
 package org.android.go.sopt.presentation.home.viewmodel
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import org.android.go.sopt.data.response.FriendData
-import org.android.go.sopt.presentation.home.repository.FriendRepository
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import org.android.go.sopt.data.repository.FriendRepositoryImpl
+import org.android.go.sopt.domain.model.Friend
 
-class FriendViewModel: ViewModel() {
+class FriendViewModel(val friendRepositoryImpl: FriendRepositoryImpl): ViewModel(){
     /*repository 객체 생성*/
-    private val friendRepository = FriendRepository()
+    private var _friendList = MutableStateFlow<List<Friend>>(listOf())
+    val friendList get() = _friendList.asStateFlow()
 
-    /*repository 에 있는 MutableLiveData 를 ViewModel 의 LiveData 에 넣는다*/
-    private val friendData : LiveData<List<FriendData?>?>
-        get() = friendRepository._friendData
-
-    fun loadFriendData(){
-        friendRepository.loadFriendData()
-        //repository 에 있는 메서드를 호출하여 서버에서 친구 정보를 가져온다
+    init{
+        fetchFriendList()
     }
 
-    fun getAll(): LiveData<List<FriendData?>?> {
-        return friendData
+    private fun fetchFriendList() {
+        viewModelScope.launch {
+            friendRepositoryImpl.fetchFriend()
+                .onSuccess { data ->
+                    _friendList.value = data
+                }
+                .onFailure { throwable ->
+                    Log.d("서버통신 실패", throwable.message.toString())
+                }
+        }
     }
 }
