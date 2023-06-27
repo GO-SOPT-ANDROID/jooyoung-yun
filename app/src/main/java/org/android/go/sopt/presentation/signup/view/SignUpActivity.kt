@@ -12,12 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivitySignupBinding
 import org.android.go.sopt.presentation.signup.viewmodel.SignUpViewModel
-import org.android.go.sopt.util.binding.BindingActivity
 import java.util.regex.Pattern
 
 
 /*회원가입 페이지*/
-class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_signup) {
+class SignUpActivity : AppCompatActivity() {
+    lateinit var binding: ActivitySignupBinding
+
     private val viewModel: SignUpViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
