@@ -1,20 +1,18 @@
 package org.android.go.sopt.presentation.home.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityMainBinding
 import org.android.go.sopt.presentation.gallery.view.GalleryFragment
 import org.android.go.sopt.presentation.search.SearchFragment
+import org.android.go.sopt.util.binding.BindingActivity
 
-class HomeActivity : AppCompatActivity() {
-
-    lateinit var binding: ActivityMainBinding
+class HomeActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        changeFragment(HomeFragment())
+
 
         binding.bnvMain.setOnItemSelectedListener {
             changeFragment(
@@ -27,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
             true
         }
     }
+
     /*fragment 바꾸기*/
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
