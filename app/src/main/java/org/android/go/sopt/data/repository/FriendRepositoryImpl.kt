@@ -1,6 +1,6 @@
 package org.android.go.sopt.data.repository
 
-import org.android.go.sopt.data.datasource.remote.FriendDataSource
+import org.android.go.sopt.data.datasource.FriendDataSource
 import org.android.go.sopt.domain.model.Friend
 import org.android.go.sopt.domain.repository.FriendRepository
 
