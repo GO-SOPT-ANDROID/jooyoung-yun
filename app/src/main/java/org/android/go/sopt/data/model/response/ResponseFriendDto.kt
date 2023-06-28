@@ -1,4 +1,4 @@
-package org.android.go.sopt.data.response
+package org.android.go.sopt.data.model.response
 
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
