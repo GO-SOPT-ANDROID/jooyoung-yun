@@ -3,8 +3,8 @@ package org.android.go.sopt.presentation.login.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.android.go.sopt.data.api.ServicePool.logInService
-import org.android.go.sopt.data.request.RequestLogInDto
-import org.android.go.sopt.data.response.ResponseLogInDto
+import org.android.go.sopt.data.model.request.RequestLogInDto
+import org.android.go.sopt.data.model.response.ResponseLogInDto
 import retrofit2.Call
 import retrofit2.Response
 

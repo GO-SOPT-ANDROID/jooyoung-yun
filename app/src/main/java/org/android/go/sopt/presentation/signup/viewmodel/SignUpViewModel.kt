@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import org.android.go.sopt.R
 import org.android.go.sopt.data.api.ServicePool
-import org.android.go.sopt.data.request.RequestSignUpDto
-import org.android.go.sopt.data.response.ResponseSignUpDto
+import org.android.go.sopt.data.model.request.RequestSignUpDto
+import org.android.go.sopt.data.model.response.ResponseSignUpDto
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
