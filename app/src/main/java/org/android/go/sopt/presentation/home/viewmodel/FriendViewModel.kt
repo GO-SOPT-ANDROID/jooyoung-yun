@@ -10,7 +10,6 @@ import org.android.go.sopt.data.repository.FriendRepositoryImpl
 import org.android.go.sopt.domain.model.Friend
 
 class FriendViewModel(val friendRepositoryImpl: FriendRepositoryImpl): ViewModel(){
-    /*repository 객체 생성*/
     private var _friendList = MutableStateFlow<List<Friend>>(listOf())
     val friendList get() = _friendList.asStateFlow()
 
