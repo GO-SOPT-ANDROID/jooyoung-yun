@@ -52,11 +52,11 @@ data class ResponseFriendDto (
         @SerialName("text")
         val text: String
     )
-    fun toFriend() = data.map { info->
+    fun toFriend() = data.map { data->
         Friend(
-            avatar = info.avatar,
-            email = info.email,
-            firstName = info.firstName
+            avatar = data.avatar,
+            email = data.email,
+            firstName = data.firstName
         )
     }
 }
