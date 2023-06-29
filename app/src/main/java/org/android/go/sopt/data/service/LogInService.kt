@@ -7,9 +7,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface LogInService {
-
     @POST("sign-in")
-    fun logIn(
-        @Body request: RequestLogInDto
-    ): Call<ResponseLogInDto>
+    suspend fun logIn(
+        @Body requestLogInDto: RequestLogInDto
+    ): ResponseLogInDto
 }
