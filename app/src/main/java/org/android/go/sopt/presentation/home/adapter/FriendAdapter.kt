@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import org.android.go.sopt.databinding.ItemFriendBinding
 import org.android.go.sopt.domain.model.Friend
 import org.android.go.sopt.util.ItemDiffCallback
@@ -18,11 +17,14 @@ class FriendAdapter() : ListAdapter<Friend, FriendAdapter.FriendViewHolder>(
 ) {
     class FriendViewHolder(private val binding: ItemFriendBinding,) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Friend) {
-            with(binding) {
+            binding.friend = data
+            binding.executePendingBindings()
+            /*with(binding) {
+
                 tvName.text = data.firstName
                 tvEmail.text = data.email
                 imgFollower.load(data.avatar)
-            }
+            }*/
         }
     }
     /*ViewHolder 에 들어갈 View 를 만들어주는 함수*/

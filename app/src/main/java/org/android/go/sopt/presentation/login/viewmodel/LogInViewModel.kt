@@ -18,9 +18,12 @@ class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel()
     private val _logInResult: MutableLiveData<ResponseLogInDto> = MutableLiveData()
     val logInResult: MutableLiveData<ResponseLogInDto> = _logInResult //전화기 생성
 
+    val inputId : MutableLiveData<String> = MutableLiveData("")
+    val inputPassword : MutableLiveData<String> = MutableLiveData("")
+
     fun logIn(id:String,pw:String) =
         viewModelScope.launch {
-            val response = logInRepository.LogIn(id,pw)
+            val response = logInRepository.logIn(id,pw)
             if(response.isSuccess){
                 Timber.d("LogIn Success")
             }
