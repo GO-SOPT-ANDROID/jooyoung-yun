@@ -19,12 +19,6 @@ class FriendAdapter() : ListAdapter<Friend, FriendAdapter.FriendViewHolder>(
         fun onBind(data: Friend) {
             binding.friend = data
             binding.executePendingBindings()
-            /*with(binding) {
-
-                tvName.text = data.firstName
-                tvEmail.text = data.email
-                imgFollower.load(data.avatar)
-            }*/
         }
     }
     /*ViewHolder 에 들어갈 View 를 만들어주는 함수*/
