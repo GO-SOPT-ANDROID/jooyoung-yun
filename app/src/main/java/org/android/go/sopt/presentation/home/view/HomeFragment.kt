@@ -40,7 +40,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun initLayout(){
         friendAdapter = FriendAdapter()
         binding.rvFriendList.adapter = friendAdapter
-        binding.rvFriendList.layoutManager = LinearLayoutManager(requireContext())
 
     }
     private fun collectData(){
