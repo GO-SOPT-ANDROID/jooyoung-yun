@@ -1,40 +1,68 @@
 package org.android.go.sopt.presentation.signup.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.android.go.sopt.R
-import org.android.go.sopt.data.api.ServicePool
-import org.android.go.sopt.data.model.request.RequestSignUpDto
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import org.android.go.sopt.data.model.response.ResponseSignUpDto
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.android.go.sopt.data.repository.SignUpRepositoryImpl
+import org.android.go.sopt.util.UiState
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(private val signUpRepositoryImpl: SignUpRepositoryImpl) : ViewModel() {
+    val id = MutableLiveData("")
+    val password = MutableLiveData("")
+    val name = MutableLiveData("")
+    val hobby = MutableLiveData("")
 
-    fun loadSignUpData() {
-        ServicePool.signUpService.signUp(
-            RequestSignUpDto(
-                R.id.et_newID.toString(),
-                R.id.et_newPW.toString(),
-                R.id.et_name.toString(),
-                R.id.et_hobby.toString()
-            )
-        ).enqueue(object : Callback<ResponseSignUpDto> {
-            override fun onResponse(
-                call: Call<ResponseSignUpDto>,
-                response: Response<ResponseSignUpDto>
-            ) {
-                if (response.isSuccessful) {
-                    Log.e("서버 통신 성공", response.message().toString())
-                } else {
-                    Log.e("error", response.errorBody().toString())
-                }
+    val isValidID: LiveData<Boolean> = id.map { id ->
+        id.matches(Regex(ID_PATTERN))
+    }
+
+    val isVaildPW: LiveData<Boolean> = id.map { pw ->
+        pw.matches(Regex(PASSWORD_PATTERN))
+    }
+
+    val isSignUpValid = MediatorLiveData<Boolean>().apply {
+        addSource(id) { value = checkSignUpCondition() }
+        addSource(password) { value = checkSignUpCondition() }
+        addSource(name) { value = checkSignUpCondition() }
+        addSource(hobby) { value = checkSignUpCondition() }
+    }
+
+    private fun checkSignUpCondition(): Boolean {
+        return isValidID.value == true && isVaildPW.value == true && !name.value.isNullOrBlank() && !name.value.isNullOrBlank()
+    }
+
+    private val _signUpState: MutableLiveData<UiState<ResponseSignUpDto.UserInfo>> =
+        MutableLiveData()
+    val signUpState: LiveData<UiState<ResponseSignUpDto.UserInfo>> = _signUpState
+
+    private val _signUpMessage: MutableLiveData<String> = MutableLiveData()
+    val signUpMessage: LiveData<String> = _signUpMessage
+
+    fun signUp() {
+        viewModelScope.launch {
+            signUpRepositoryImpl.signUp(
+                id.value.toString(),
+                password.value.toString(),
+                name.value.toString(),
+                hobby.value.toString()
+            ).onSuccess { info ->
+                _signUpState.value = UiState.Success(info)
+                _signUpMessage.value = "회원가입 성공"
+            }.onFailure { throwable ->
+                _signUpState.value = UiState.Error(throwable.message)
+                _signUpMessage.value = "회원가입 중 오류 발생"
             }
+        }
+    }
 
-            override fun onFailure(call: Call<ResponseSignUpDto>, t: Throwable) {
-                Log.e("server error", "서버통신 실패")
-            }
-        })
+    companion object {
+        const val ID_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,10}$"
+        const val PASSWORD_PATTERN =
+            "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,12}$"
     }
 }
