@@ -28,7 +28,8 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     private val viewModel by viewModels<LogInViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+
+        addListeners()
 
         /*회원가입 정보 받아오기*/
         setSignUpResult()
@@ -56,11 +57,17 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             )
         }
         /*키보드 숨기기*/
+
+    }
+    private fun addListeners(){
         binding.root.setOnClickListener {
             hideKeyboard(it)
         }
     }
 
+    private fun addObservers(){
+
+    }
     private fun setSignUpResult() {
         activityResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()

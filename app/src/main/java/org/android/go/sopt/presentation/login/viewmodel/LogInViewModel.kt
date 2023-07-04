@@ -18,8 +18,8 @@ class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel()
     private val _logInResult: MutableLiveData<ResponseLogInDto> = MutableLiveData()
     val logInResult: MutableLiveData<ResponseLogInDto> = _logInResult //전화기 생성
 
-    val inputId : MutableLiveData<String> = MutableLiveData("")
-    val inputPassword : MutableLiveData<String> = MutableLiveData("")
+    val id = MutableLiveData("")
+    val password = MutableLiveData("")
 
     fun logIn(id:String,pw:String) =
         viewModelScope.launch {
@@ -33,4 +33,3 @@ class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel()
         }
 
 }
-
