@@ -1,18 +1,14 @@
 package org.android.go.sopt.presentation.login.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.android.go.sopt.data.api.ServicePool.logInService
-import org.android.go.sopt.data.model.request.RequestLogInDto
 import org.android.go.sopt.data.model.response.ResponseLogInDto
-import org.android.go.sopt.data.repository.LogInRepositoryImpl
 import org.android.go.sopt.domain.repository.LogInRepository
-import retrofit2.Call
-import retrofit2.Response
-import timber.log.Timber
-import java.io.PipedWriter
+import org.android.go.sopt.presentation.UserInfo
+import org.android.go.sopt.util.UiState
 
 class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel() {
     private val _logInResult: MutableLiveData<ResponseLogInDto> = MutableLiveData()
@@ -20,16 +16,28 @@ class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel()
 
     val id = MutableLiveData("")
     val password = MutableLiveData("")
+    val name = MutableLiveData("")
+    val hobby = MutableLiveData("")
 
-    fun logIn(id:String,pw:String) =
+    private val _logInState: MutableLiveData<UiState<ResponseLogInDto.UserInfo>> = MutableLiveData()
+    val logInState: LiveData<UiState<ResponseLogInDto.UserInfo>> = _logInState
+
+    private val _logInMessage: MutableLiveData<String> = MutableLiveData()
+    val logInMessage: MutableLiveData<String> = _logInMessage
+
+    fun logIn() {
         viewModelScope.launch {
-            val response = logInRepository.logIn(id,pw)
-            if(response.isSuccess){
-                Timber.d("LogIn Success")
-            }
-            else{
-                Timber.d("LogIn Failed")
+            logInRepository.logIn(
+                id.value.toString(),
+                password.value.toString()
+            ).onSuccess { info ->
+                _logInState.value = UiState.Success(info)
+                _logInMessage.value = "로그인 성공"
+
+            }.onFailure { throwable ->
+                _logInState.value = UiState.Error(throwable.message)
+                _logInMessage.value = "로그인 실패"
             }
         }
-
+    }
 }
