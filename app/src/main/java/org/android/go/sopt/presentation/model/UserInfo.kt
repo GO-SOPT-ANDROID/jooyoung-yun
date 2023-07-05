@@ -1,4 +1,4 @@
-package org.android.go.sopt.presentation
+package org.android.go.sopt.presentation.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

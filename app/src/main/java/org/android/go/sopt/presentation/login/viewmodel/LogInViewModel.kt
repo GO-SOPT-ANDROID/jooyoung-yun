@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.android.go.sopt.data.model.response.ResponseLogInDto
 import org.android.go.sopt.domain.repository.LogInRepository
-import org.android.go.sopt.presentation.UserInfo
 import org.android.go.sopt.util.UiState
 
 class LogInViewModel(private val logInRepository: LogInRepository) : ViewModel() {

@@ -1,5 +1,6 @@
 package org.android.go.sopt.presentation.signup.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivitySignupBinding
 import org.android.go.sopt.presentation.common.ViewModelFactory
+import org.android.go.sopt.presentation.login.view.LoginActivity
+import org.android.go.sopt.presentation.model.UserInfo
 import org.android.go.sopt.presentation.signup.viewmodel.SignUpViewModel
 import org.android.go.sopt.util.UiState
 import org.android.go.sopt.util.binding.BindingActivity
@@ -45,7 +48,8 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
         viewModel.signUpState.observe(this){signUpState->
             when(signUpState){
                 is UiState.Success ->{
-                    finish()
+                    viewModel.saveUserInfo()
+                    moveToLogIn()
                 }
                 else ->{
                     Timber.e(getString(R.string.ui_state_false))
@@ -53,4 +57,16 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
             }
         }
     }
+
+    private fun moveToLogIn(){
+        val intent = Intent(this, LoginActivity::class.java)
+        with(binding){
+            intent.putExtra(
+                "userInfo",viewModel.getUserInfo()
+            )
+        }
+        setResult(RESULT_OK,intent)
+        finish()
+    }
+
 }

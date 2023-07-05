@@ -8,10 +8,11 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.android.go.sopt.data.model.response.ResponseSignUpDto
-import org.android.go.sopt.data.repository.SignUpRepositoryImpl
+import org.android.go.sopt.domain.repository.SignUpRepository
+import org.android.go.sopt.presentation.model.UserInfo
 import org.android.go.sopt.util.UiState
 
-class SignUpViewModel(private val signUpRepositoryImpl: SignUpRepositoryImpl) : ViewModel() {
+class SignUpViewModel(private val signUpRepository: SignUpRepository) : ViewModel() {
     val id = MutableLiveData("")
     val password = MutableLiveData("")
     val name = MutableLiveData("")
@@ -45,7 +46,7 @@ class SignUpViewModel(private val signUpRepositoryImpl: SignUpRepositoryImpl) : 
 
     fun signUp() {
         viewModelScope.launch {
-            signUpRepositoryImpl.signUp(
+            signUpRepository.signUp(
                 id.value.toString(),
                 password.value.toString(),
                 name.value.toString(),
@@ -58,6 +59,19 @@ class SignUpViewModel(private val signUpRepositoryImpl: SignUpRepositoryImpl) : 
                 _signUpMessage.value = "회원가입 중 오류 발생"
             }
         }
+    }
+
+    fun saveUserInfo() {
+
+    }
+
+    fun getUserInfo() : UserInfo{
+        return UserInfo(
+            requireNotNull(id.value),
+            requireNotNull(password.value),
+            name.value,
+            hobby.value
+        )
     }
 
     companion object {
