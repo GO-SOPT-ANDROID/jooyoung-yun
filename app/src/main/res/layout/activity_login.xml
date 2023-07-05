@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:hint="@string/input_id"
+            android:hint="@string/input_id_hint"
             android:inputType="text"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:hint="@string/input_pw"
+            android:hint="@string/input_pw_hint"
             android:inputType="textPassword"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_text_inputpw" />
 
         <Button
-            android:id="@+id/bt_signIn"
+            android:id="@+id/bt_sign_up"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
