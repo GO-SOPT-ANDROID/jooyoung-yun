@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+
 }
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -37,7 +40,14 @@ android {
         jvmTarget = '11'
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
+        dataBinding = true
+    }
+
+    dataBinding {
+
+        enabled = true
+
     }
 }
 
@@ -80,4 +90,14 @@ dependencies {
 
     //coil
     implementation 'io.coil-kt:coil:2.3.0'
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //dataStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+
+    implementation "androidx.security:security-crypto-ktx:1.1.0-alpha03"
+
 }
