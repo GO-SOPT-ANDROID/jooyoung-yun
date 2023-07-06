@@ -2,23 +2,16 @@ package org.android.go.sopt.presentation.signup.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivitySignupBinding
-import org.android.go.sopt.presentation.common.ViewModelFactory
-import org.android.go.sopt.presentation.login.view.LoginActivity
-import org.android.go.sopt.presentation.model.UserInfo
+import org.android.go.sopt.presentation.login.view.LogInActivity
 import org.android.go.sopt.presentation.signup.viewmodel.SignUpViewModel
 import org.android.go.sopt.util.UiState
 import org.android.go.sopt.util.binding.BindingActivity
 import org.android.go.sopt.util.hideKeyboard
 import org.android.go.sopt.util.showToast
 import timber.log.Timber
-import java.util.regex.Pattern
 
 
 /*회원가입 페이지*/
@@ -49,7 +42,9 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
             when(signUpState){
                 is UiState.Success ->{
                     viewModel.saveUserInfo()
+                    /*서버의 정보를 받아오는 뷰모델에서 사용자 이름과 특기만 저장 받는다*/
                     moveToLogIn()
+                    /*회원가입한 사용자의 정보를 모두 가지고 LogInActivity로 넘어간다*/
                 }
                 else ->{
                     Timber.e(getString(R.string.ui_state_false))
@@ -59,7 +54,7 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
     }
 
     private fun moveToLogIn(){
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, LogInActivity::class.java)
         with(binding){
             intent.putExtra(
                 "userInfo",viewModel.getUserInfo()

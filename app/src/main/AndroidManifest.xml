@@ -25,7 +25,7 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".presentation.login.view.LoginActivity"
+            android:name=".presentation.login.view.LogInActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

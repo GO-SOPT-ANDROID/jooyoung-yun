@@ -3,17 +3,13 @@ package org.android.go.sopt.presentation.login.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.presentation.common.ViewModelFactory
 import org.android.go.sopt.presentation.home.view.HomeActivity
 import org.android.go.sopt.presentation.login.viewmodel.LogInViewModel
-import org.android.go.sopt.presentation.profile.view.ProfileActivity
 import org.android.go.sopt.presentation.signup.view.SignUpActivity
 import org.android.go.sopt.util.UiState
 import org.android.go.sopt.util.binding.BindingActivity
@@ -21,7 +17,7 @@ import org.android.go.sopt.util.hideKeyboard
 import org.android.go.sopt.util.showToast
 import timber.log.Timber
 
-class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+class LogInActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
     //전역변수 설정
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
