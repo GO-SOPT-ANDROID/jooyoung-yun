@@ -12,6 +12,10 @@ fun Context.showToast(message: String, isShort: Boolean = true){
     Toast.makeText(this, message, duration).show()
 }
 
+fun View.showSnackBar(message: String, isShort: Boolean = true){
+    val duration = if(isShort) Snackbar.LENGTH_SHORT else Snackbar.LENGTH_LONG
+    Snackbar.make(this,message,duration).show()
+}
 fun Context.hideKeyboard(view: View, isShown: Boolean = false){
     (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).run{
         if (isShown) showSoftInput(view,0)

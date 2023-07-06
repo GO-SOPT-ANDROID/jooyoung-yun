@@ -17,7 +17,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/bt_signUp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,8 +65,8 @@
 
                 <TextView
                     android:id="@+id/tv_id_error"
-                    visibility="@{!viewModel.id.empty &amp; !viewModel.isValidID()"
-                    android:layout_width="wrap_content"
+                    visibility="@{!viewModel.isValidId()}"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_500"
                     app:layout_constraintStart_toStartOf="@id/et_newID"
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_500"
-                    visibility="@{!viewModel.password.empty &amp; !viewModel.isVaildPW()}"
+                    visibility="@{!viewModel.isValidPw()}"
                     app:layout_constraintStart_toStartOf="@id/et_newPW"
                     app:layout_constraintTop_toBottomOf="@id/et_newPW"
                     tools:text="테스트" />
@@ -159,15 +159,15 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/bt_signUp"
+            android:id="@+id/btn_sign_up"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="16dp"
             android:enabled="@{viewModel.isSignUpValid()}"
             android:onClick="@{()-> viewModel.signUp()}"
             android:paddingVertical="15dp"
-            android:text="@string/signInset"
+            android:text="@string/sign_up_complete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

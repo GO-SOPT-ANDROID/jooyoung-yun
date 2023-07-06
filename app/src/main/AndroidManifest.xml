@@ -23,7 +23,7 @@
         <activity
             android:name=".presentation.signup.view.SignUpActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".presentation.login.view.LogInActivity"
             android:exported="true"
