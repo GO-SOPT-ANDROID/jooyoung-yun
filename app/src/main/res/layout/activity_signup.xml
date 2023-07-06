@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/background_normal_status"
+                    android:background="@{!viewModel.Id.empty &amp;!viewModel.isValidId()? @drawable/background_need_change_status : @drawable/background_normal_status }"
                     android:hint="@string/input_id_hint"
                     android:inputType="text"
                     android:padding="12dp"
@@ -65,13 +65,13 @@
 
                 <TextView
                     android:id="@+id/tv_id_error"
-                    visibility="@{!viewModel.isValidId()}"
+                    visibility="@{!viewModel.Id.empty &amp;!viewModel.isValidId()}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_500"
+                    android:text="@string/sign_up_id_error_msg"
                     app:layout_constraintStart_toStartOf="@id/et_newID"
-                    app:layout_constraintTop_toBottomOf="@id/et_newID"
-                    tools:text="테스트" />
+                    app:layout_constraintTop_toBottomOf="@id/et_newID" />
 
                 <TextView
                     android:id="@+id/tv_setPW"
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/background_normal_status"
+                    android:background="@{!viewModel.password.empty &amp;!viewModel.isValidPw()? @drawable/background_need_change_status : @drawable/background_normal_status }"
                     android:padding="12dp"
                     android:hint="@string/input_pw_hint"
                     android:inputType="textPassword"
@@ -105,10 +105,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_500"
-                    visibility="@{!viewModel.isValidPw()}"
+                    visibility="@{!viewModel.password.empty &amp;!viewModel.isValidPw()}"
                     app:layout_constraintStart_toStartOf="@id/et_newPW"
                     app:layout_constraintTop_toBottomOf="@id/et_newPW"
-                    tools:text="테스트" />
+                    android:text="@string/sign_up_pw_error_msg" />
 
                 <TextView
                     android:id="@+id/tv_profile"

@@ -30,8 +30,8 @@ class SignUpViewModel(
         id.matches(Regex(ID_PATTERN))
     }
 
-    val isValidPw: LiveData<Boolean> = id.map { pw ->
-        pw.matches(Regex(PASSWORD_PATTERN))
+    val isValidPw: LiveData<Boolean> = password.map { password ->
+        password.matches(Regex(PASSWORD_PATTERN))
     }
 
     val isSignUpValid = MediatorLiveData<Boolean>().apply {
@@ -93,6 +93,6 @@ class SignUpViewModel(
     companion object {
         const val ID_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,10}$"
         const val PASSWORD_PATTERN =
-            "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#%^&*()])[a-zA-Z0-9!@#%^&*()]{6,12}"
+            "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{6,12}\$"
     }
 }
