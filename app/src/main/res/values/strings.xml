@@ -20,4 +20,6 @@
     <string name="id_need">아이디는 6~10 사이로 입력해주세요</string>
     <string name="pw_need">비밀번호는 8~1 사이로 입력해주세요</string>
     <string name="ui_state_false">오류 발생</string>
+    <string name="sign_up_id_error_msg">아이디는 영문 숫자 6~10 자 이내</string>
+    <string name="sign_up_pw_error_msg">비밀번호는 특수문자 영어 포함 8~10자 이내</string>
 </resources>
