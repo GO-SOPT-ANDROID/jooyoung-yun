@@ -40,17 +40,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:textAlignment="center"
                 android:text="@{Friend.email}"
+                android:textAlignment="center"
                 android:textSize="20sp"
                 tools:text="email" />
 
             <ImageView
                 android:id="@+id/img_follower"
+                imageUrl="@{Friend.avatar}"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                imageUrl="@{Friend.avatar}"
                 android:src="@drawable/snoopy" />
 
 
